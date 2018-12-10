@@ -1,7 +1,7 @@
-# Lanette
+# Lanette, but cheesey
 [![Build Status](https://api.travis-ci.com/sirDonovan/Lanette.svg?branch=master)](https://travis-ci.com/sirDonovan/Lanette)
 
-A bot for [Pokemon Showdown][1] written in [TypeScript][2].
+A bot for [Pokemon Showdown][1] written in [TypeScript][2], modified by arandompieceofcheese.
 
   [1]: https://github.com/Zarel/Pokemon-Showdown
   [2]: https://www.typescriptlang.org/

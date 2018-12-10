@@ -1,4 +1,5 @@
 import { Room } from "./rooms";
+import { Game } from './room-game';
 
 export class User {
 	/** Map<Room, rank> */
@@ -6,6 +7,7 @@ export class User {
 
 	id: string;
 	name: string;
+	game?: Game;
 
 	constructor(name: string, id: string) {
 		this.name = name;

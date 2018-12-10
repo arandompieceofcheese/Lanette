@@ -64,3 +64,6 @@ typings/
 built/
 design.txt
 src/config.ts
+
+# vscode bullshit
+.vscode
