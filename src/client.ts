@@ -63,6 +63,7 @@ export class Client {
 	}
 
 	connect() {
+	if(Config.endpoint) return this.client.connect(Config.endpoint);
 		const options = {
 			hostname: 'play.pokemonshowdown.com',
 			path: '/crossdomain.php?' + querystring.stringify({host: this.server, path: ''}),

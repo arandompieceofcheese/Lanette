@@ -16,6 +16,7 @@ export let password = '';
  * Leave blank to connect to the main server
  */
 export let server = '';
+export let endpoint = '';
 
 /**
  * The base amount of time (in milliseconds) between connection attempts

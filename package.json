@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "test": "tslint -c tslint.json 'src/**/*.ts' && tsc",
-    "tsc": "tsc"
+    "tsc": "tsc",
+    "start": "node built/app.js"
   },
   "repository": {
     "type": "git",
@@ -19,7 +20,9 @@
   "homepage": "https://github.com/sirDonovan/Lanette#readme",
   "dependencies": {
     "@types/node": "10.12.2",
+    "@types/node-fetch": "^2.1.4",
     "@types/websocket": "0.0.40",
+    "node-fetch": "^2.3.0",
     "typescript": "3.1.6",
     "websocket": "1.0.28"
   },

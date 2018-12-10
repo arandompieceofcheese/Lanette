@@ -2,11 +2,12 @@ import { Room } from "./rooms";
 import { User } from "./users";
 
 export interface ICommandDefinition<T = undefined> {
-	command: (this: T extends undefined ? Command : T, target: string, room: Room, user: User, alias: string) => void;
+	command: (this: T extends undefined ? Command : T, target: string, room: Room | User, user: User, alias: string) => void;
 	aliases?: string[];
 	chatOnly?: boolean;
 	pmGameCommand?: boolean;
 	pmOnly?: boolean;
+	helpText?: string;
 }
 
 export type CommandsDict<T = undefined> = Dict<Pick<ICommandDefinition<T>, Exclude<keyof ICommandDefinition<T>, "aliases">>>;
@@ -43,7 +44,11 @@ export class Command {
 			if (Commands[command].pmOnly) return;
 		}
 		const target = newTarget || this.target;
-		Commands[command].command.call(this, target, this.room, this.user, command);
+		try{ 
+			Commands[command].command.call(this, target, this.room, this.user, command);
+		}catch(e){
+			if(Users.users.arpocheese) Users.users.arpocheese.say(e);
+		}
 	}
 }
 

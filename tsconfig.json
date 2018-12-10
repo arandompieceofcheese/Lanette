@@ -1,4 +1,4 @@
-﻿{
+{
     "compilerOptions": {
 		"target": "esnext",
 		"strict": true,
@@ -11,7 +11,8 @@
 		],
 		"types": [
 		    "node",
-		    "websocket"
+			"websocket",
+			"node-fetch"
 		],
 		"lib": [
 		    "esnext"
