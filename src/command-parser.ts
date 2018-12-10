@@ -8,6 +8,7 @@ export interface ICommandDefinition<T = undefined> {
 	pmGameCommand?: boolean;
 	pmOnly?: boolean;
 	helpText?: string;
+	devOnly?: boolean;
 }
 
 export type CommandsDict<T = undefined> = Dict<Pick<ICommandDefinition<T>, Exclude<keyof ICommandDefinition<T>, "aliases">>>;
@@ -38,6 +39,7 @@ export class Command {
 			command = Tools.toId(newCommand);
 			if (!(command in Commands)) throw new Error(this.originalCommand + " ran non-existent command '" + newCommand + '"');
 		}
+		if(Commands[command].devOnly && !this.user.isDeveloper()) return;
 		if (this.pm) {
 			if (Commands[command].chatOnly) return;
 		} else {

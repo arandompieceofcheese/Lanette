@@ -4,7 +4,6 @@ import fetch from 'node-fetch';
 const commands: Dict<ICommandDefinition> = {
 	eval: {
 		command(target, room, user) {
-			if (!user.isDeveloper()) return;
 			try {
 				// tslint:disable-next-line no-eval
 				const result = eval(target);
@@ -14,11 +13,11 @@ const commands: Dict<ICommandDefinition> = {
 			}
 		},
 		aliases: ['js'],
+		devOnly: true
 	},
 
 	reload: {
 		command(target, room, user) {
-			if (!user.isDeveloper()) return;
 			try{
 				delete require.cache[require.resolve('./commands')];
 				global.Commands = Object.assign(Object.create(null), CommandParser.loadCommands(require('./commands')));
@@ -26,7 +25,8 @@ const commands: Dict<ICommandDefinition> = {
 			}catch(e){
 				this.say(e.message);
 			}
-		}
+		},
+		devOnly: true
 	},
 
 	say: {
@@ -47,17 +47,19 @@ const commands: Dict<ICommandDefinition> = {
 
 	message: {
 		command(target, room, user){
-			if (!user.isDeveloper()) return;
 			let r: string = target.slice(0, target.indexOf(',')).trim();
 			let c: string = target.slice(target.indexOf(',') + 1).replace(/^\s+/, '');
 			Client.send(r + '|' + c);
-		}
+		},
+		devOnly: true,
+		pmOnly: true
 	},
 
 	test: {
 		command(target, room, user){
 			if (!user.isDeveloper()) return;
-		}
+		},
+		devOnly: true
 	}
 };
 
